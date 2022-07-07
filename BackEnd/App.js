@@ -9,7 +9,7 @@ const { database } = require("./Database");
 
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "*",
   })
 );
 

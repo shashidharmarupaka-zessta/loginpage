@@ -5,6 +5,7 @@ import MainHeader from "./Components/MainHeader/MainHeader";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginUser, setLoginUser] = useState('')
 
   const loginHandler = async (email, password) => {
     console.log("login handler", email);
@@ -32,17 +33,12 @@ function App() {
       headers: { token: token },
     });
     const userDetails =  await response.json();
-    console.log(userDetails);
-
-    
+    console.log(userDetails.email);
+    setLoginUser(userDetails.email);
   };
-
-  // const uD = () => {
-  //   setIsLoggedIn(true);
-  // }
-  
  
   const logoutHandler = () => {
+    setLoginUser(false);
     setIsLoggedIn(false);
   };
 
@@ -51,7 +47,7 @@ function App() {
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
-        {isLoggedIn && <Home  onLogout={logoutHandler} />}
+        {isLoggedIn && loginUser !== '' && <Home  data = {loginUser} />}
       </main>
     </React.Fragment>
   );

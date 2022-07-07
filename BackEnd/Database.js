@@ -4,7 +4,7 @@ const { myToken } = require("./TokenGeneration");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Shashi@mysql123",
+  password: "geetha@26",
   database: "login_details",
   multipleStatements: true,
 });
